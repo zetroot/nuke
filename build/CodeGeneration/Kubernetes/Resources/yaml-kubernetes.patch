@@ -1,0 +1,42 @@
+diff --git a/cmd/genyaml/gen_kubectl_yaml.go b/cmd/genyaml/gen_kubectl_yaml.go
+index c95ee2a3d5..7934470541 100644
+--- a/cmd/genyaml/gen_kubectl_yaml.go
++++ b/cmd/genyaml/gen_kubectl_yaml.go
+@@ -34,11 +34,13 @@ type cmdOption struct {
+ 	Shorthand    string `yaml:",omitempty"`
+ 	DefaultValue string `yaml:"default_value,omitempty"`
+ 	Usage        string `yaml:",omitempty"`
++	Type         string `yaml:",omitempty"`
+ }
+ 
+ type cmdDoc struct {
+ 	Name             string
+ 	Synopsis         string      `yaml:",omitempty"`
++	Usage            string      `yaml:",omitempty"`
+ 	Description      string      `yaml:",omitempty"`
+ 	Options          []cmdOption `yaml:",omitempty"`
+ 	InheritedOptions []cmdOption `yaml:"inherited_options,omitempty"`
+@@ -94,6 +96,7 @@ func genFlagResult(flags *pflag.FlagSet) []cmdOption {
+ 				flag.Shorthand,
+ 				flag.DefValue,
+ 				forceMultiLine(flag.Usage),
++				flag.Value.Type(),
+ 			}
+ 			result = append(result, opt)
+ 		} else {
+@@ -101,6 +104,7 @@ func genFlagResult(flags *pflag.FlagSet) []cmdOption {
+ 				Name:         flag.Name,
+ 				DefaultValue: forceMultiLine(flag.DefValue),
+ 				Usage:        forceMultiLine(flag.Usage),
++				Type:         flag.Value.Type(),
+ 			}
+ 			result = append(result, opt)
+ 		}
+@@ -115,6 +119,7 @@ func genYaml(command *cobra.Command, parent, docsDir string) {
+ 	doc.Name = command.Name()
+ 	doc.Synopsis = forceMultiLine(command.Short)
+ 	doc.Description = forceMultiLine(command.Long)
++	doc.Usage = command.Use
+ 
+ 	flags := command.NonInheritedFlags()
+ 	if flags.HasFlags() {

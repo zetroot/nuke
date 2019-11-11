@@ -20,11 +20,13 @@
   </ItemDefinitionGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mono.Cecil" Version="0.10.1" />
     <PackageReference Include="Octokit" Version="0.36.0" />
 
     <PackageDownload Include="GitVersion.Tool" Version="[5.1.1]" />
     <PackageDownload Include="JetBrains.dotCover.CommandLineTools" Version="[2019.2.2]" />
     <PackageDownload Include="JetBrains.ReSharper.CommandLineTools" Version="[2019.2.1]" />
+    <PackageDownload Include="NuGet.CommandLine" Version="[5.3.1]" />
     <PackageDownload Include="OpenCover" Version="[4.7.922]" />
     <PackageDownload Include="ReportGenerator" Version="[4.2.16]" />
     <PackageDownload Include="xunit.runner.console" Version="[2.4.1]" />

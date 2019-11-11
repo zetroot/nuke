@@ -1,0 +1,165 @@
+﻿additionalProperties:
+  annotate:
+  - name: TypeName
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The type or/and name of the ressource."
+  - name: Annotations
+    type: Dictionary<string,string>
+    format: "{value}"
+    itemFormat: "{key}={value}"
+    separator: " "
+    help: "The annotations to set on the ressource"
+  attach:
+  - name: Pod
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The type or/and name of the pod."
+  auth:
+  - name: Subcommand
+    type: string
+    format: "{value}"
+    help: "The subcommand to run."
+  certificate:
+  - name: Subcommand
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The subcommand to run."
+  cordon:
+  - name: Node
+    type: string
+    format: "{value}"
+    help: "The namne of the Node."
+  cp:
+  - name: SrcFileSpec
+    type: string
+    format: "{value}"
+    help: "The file specification of the source. '[namespace/]pod-name:/file/path'. for a remote file '/file/path' for a local file."
+  - name: DestFileSpec
+    type: string
+    format: "{value}"
+    help: "The file specification of the destination. '[namespace/]pod-name:/file/path'. for a remote file '/file/path' for a local file."
+  describe:
+  - name: TypeName
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The type or/and name of the ressource."
+  edit:
+  - name: TypeName
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The type or/and name of the ressource."
+  exec:
+  - name: PodName
+    type: string
+    format: "{value}"
+    help: "The name of the pod."
+  explain:
+  - name: Resource
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    position: end
+    help: "The type or/and name of the ressource."  
+  get: 
+  - name: TypeName
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The type or/and name of the ressource."
+  label: 
+  - name: TypeName
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The type or/and name of the ressource."
+  - name: Labels
+    type: Dictionary<string,string>
+    format: "{value}"
+    itemFormat: "{key}={value}"
+    separator: " "
+    help: "The Labels to set."
+  logs:
+  - name: TypeName
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The type or/and name of the ressource."
+  patch:
+  - name: TypeName
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The type or/and name of the ressource."
+  plugin:
+  - name: Name
+    type: string
+    format: "{value}"
+    help: "The name of the plugin."
+  portForward:
+  - name: TypeName
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The type or/and name of the ressource."
+  - name: Ports
+    type: Dictionary<int,int>
+    format: "{value}"
+    itemFormat: "{key}={value}"
+    separator: " "
+    help: "The port combinations to forward. In the Format 'srcPort:destPort'."
+  rollout:
+  - name: Subcommand
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The subcommand to run."
+  run:
+  - name: Name
+    type: string
+    format: "{value}"
+    help: "The name of the container."
+  set:
+  - name: Subcommand
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The subcommand to run."
+  taint:
+  - name: TypeName
+    type: List<string>
+    format: "{value}"
+    separator: " "
+    help: "The type or/and name of the ressource."
+  - name: TaintEffects
+    type: Dictionary<string,string>
+    format: "{value}"
+    itemFormat: "{key}={value}"
+    separator: " "
+    help: "The taint effects to set."
+  uncordon:
+  - name: Node
+    type: string
+    format: "{value}"
+    help: "The name of the node."
+propertyOverwrites:
+  kubectl.token:
+    secret: true
+  kubectl.vmodule:
+    name: VModule
+  kubectl.stderrthreshold:
+    name: StdErrThreshold
+  kubectl.alsologtostderr:
+    name: AlsoLogToStdErr
+  kubectl.v:
+    name: VLogLevel
+taskOverwrites:
+  exec:
+    baseClass: "KubernetesExecBaseSettings"
+
+

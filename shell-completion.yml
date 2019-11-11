@@ -32,6 +32,11 @@ Skip:
 - Coverage
 - CreateGlobalSolution
 - Generate
+- GenerateDocFX
+- GenerateDocker
+- GenerateKubernetes
+- GenerateNSwag
+- GenerateSpecifications
 - Hotfix
 - Install
 - Pack
@@ -53,6 +58,11 @@ Target:
 - Coverage
 - CreateGlobalSolution
 - Generate
+- GenerateDocFX
+- GenerateDocker
+- GenerateKubernetes
+- GenerateNSwag
+- GenerateSpecifications
 - Hotfix
 - Install
 - Pack
